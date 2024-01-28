@@ -28,5 +28,5 @@
 ### Usage
 
 ```
-TgVarDump::dump($something)
+TgVarDump::dump($something, $someValue, $somethingElse)
 ```
