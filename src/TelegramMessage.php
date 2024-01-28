@@ -8,12 +8,18 @@ use JetBrains\PhpStorm\NoReturn;
 class TelegramMessage
 {
     #[NoReturn]
-    public function dump(mixed $variable): void
+    public function dump(mixed $value, mixed ...$values): void
     {
         ob_start();
-        var_dump($variable);
+        var_dump($value, ...$values);
         $result = ob_get_clean();
+        $this->text($result);
 
+        exit('sent');
+    }
+
+    public function text(string $message): void
+    {
         /** @var Application $app */
         $app = \app();
 
@@ -22,7 +28,7 @@ class TelegramMessage
 
         $params = [
             'chat_id' => (int) $chat,
-            'text' => $result
+            'text' => $message,
         ];
 
         $curl = curl_init("https://api.telegram.org/bot$key/sendMessage");
@@ -34,7 +40,5 @@ class TelegramMessage
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_exec($curl);
         curl_close($curl);
-
-        exit('sent');
     }
 }
