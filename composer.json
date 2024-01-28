@@ -25,7 +25,7 @@
                 "Mactape\\TgVarDumper\\ServiceProvider"
             ],
             "aliases": {
-                "TgVarDumper": "Mactape\\TgVarDumper\\Facades\\TgVarDump"
+                "TgVarDump": "Mactape\\TgVarDumper\\Facades\\TgVarDump"
             }
         }
     },
