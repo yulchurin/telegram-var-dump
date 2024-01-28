@@ -1,0 +1,33 @@
+{
+    "name": "mactape/telegram-var-dump",
+    "description": "PHP Bad Practices, var dump to telegram",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "illuminate/support": "^9|^10",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mactape\\TgVarDumper\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tayfur Yulchurin",
+            "email": "yulchurin@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mactape\\TgVarDumper\\ServiceProvider"
+            ],
+            "aliases": {
+                "TgVarDumper": "Mactape\\TgVarDumper\\Facades\\TgVarDump"
+            }
+        }
+    },
+    "minimum-stability": "stable"
+}
