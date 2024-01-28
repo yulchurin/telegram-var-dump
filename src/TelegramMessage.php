@@ -7,8 +7,6 @@ use JetBrains\PhpStorm\NoReturn;
 
 class TelegramMessage
 {
-    protected $app;
-
     #[NoReturn]
     public function dump(mixed $variable): void
     {
@@ -17,7 +15,7 @@ class TelegramMessage
         $result = ob_get_clean();
 
         /** @var Application $app */
-        $app = $this->app;
+        $app = \app();
 
         $key  = $app['config']->get('tg-var-dump.key');
         $chat = $app['config']->get('tg-var-dump.chat');
