@@ -10,10 +10,15 @@ class TelegramMessage
     #[NoReturn]
     public function dump(mixed $value, mixed ...$values): void
     {
-        ob_start();
-        var_dump($value, ...$values);
-        $result = ob_get_clean();
-        $this->text($result);
+        $backtrace = \debug_backtrace();
+        $caller = \array_shift($backtrace);
+        $file = $caller['file'];
+        $line = $caller['line'];
+
+        \ob_start();
+        \var_dump($value, ...$values);
+        $result = \ob_get_clean();
+        $this->text("\nfile: _{$file}_ \nline: *$line* \n ```dump: \n$result \n```");
 
         exit('sent');
     }
@@ -29,6 +34,7 @@ class TelegramMessage
         $params = [
             'chat_id' => (int) $chat,
             'text' => $message,
+            'parse_mode' => 'markdown',
         ];
 
         $curl = curl_init("https://api.telegram.org/bot$key/sendMessage");
