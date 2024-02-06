@@ -18,9 +18,16 @@ class TelegramMessage
         \ob_start();
         \var_dump($value, ...$values);
         $result = \ob_get_clean();
-        $this->text("\nfile: _{$file}_ \nline: *$line* \n ```dump: \n$result \n```");
 
-        exit('sent');
+        $this->text("\nfile: _{$file}_ \nline: *$line* \n ```dump: \n$result \n```");
+    }
+
+    #[NoReturn]
+    public function dd(mixed $value, mixed ...$values): void
+    {
+        $this->dump($value, ...$values);
+
+        \exit('sent');
     }
 
     public function text(string $message): void

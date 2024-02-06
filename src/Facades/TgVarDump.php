@@ -7,6 +7,7 @@ use Mactape\TgVarDumper\TelegramMessage;
 
 /**
  * @method static void dump(mixed $value, mixed ...$values)
+ * @method static void dd(mixed $value, mixed ...$values)
  * @method static void text(string $message)
  *
  * @see \Mactape\TgVarDumper\TelegramMessage
