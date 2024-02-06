@@ -27,7 +27,7 @@ class TelegramMessage
     {
         $this->dump($value, ...$values);
 
-        \exit('sent');
+        exit('sent');
     }
 
     public function text(string $message): void
