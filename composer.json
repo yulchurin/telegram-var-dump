@@ -4,8 +4,8 @@
     "type": "project",
     "license": "MIT",
     "require": {
-        "php": "^8.0",
-        "illuminate/support": "^9|^10",
+        "php": "^8.2",
+        "illuminate/support": "^9|^10|^11",
         "ext-curl": "*"
     },
     "autoload": {
